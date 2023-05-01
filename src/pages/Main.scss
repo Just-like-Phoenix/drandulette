@@ -1,0 +1,22 @@
+.main {
+  margin: auto;
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+}
+
+.filter {
+  width: 80vw;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-color: transparent !important;
+}
+
+.filterButtons {
+  width: 15vw;
+}
+
+ToggleButton {
+  background-color: red !important;
+}

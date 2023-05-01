@@ -1,0 +1,33 @@
+.upernavbar {
+  margin: auto;
+  width: 80vw;
+  height: 60px !important;
+  padding: 0 !important;
+  justify-items: center;
+}
+.lowernavbar {
+  height: 40px !important;
+  padding: 0 !important;
+}
+
+.footer {
+  height: 100px !important;
+  padding: 0 !important;
+}
+
+.navbar-expand {
+  flex-wrap: nowrap;
+  justify-content: space-between !important;
+}
+
+.logo {
+  margin: 0 !important;
+  margin-left: 10px !important;
+  padding: 0 !important;
+}
+
+.buttons {
+  margin: 0 !important;
+  margin-right: 10px !important;
+  padding: 0 !important;
+}
