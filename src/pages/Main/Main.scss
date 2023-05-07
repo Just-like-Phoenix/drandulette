@@ -2,17 +2,14 @@
   margin: auto;
   width: 80vw;
   height: 80vh;
-  display: flex;
-  justify-content: center;
 }
 
 .filter {
-  width: 80vw;
   margin-top: 20px;
   margin-bottom: 20px;
-  border-color: transparent !important;
+  padding: 5px;
 }
 
-.filterButtons {
+.filtrButtons {
   width: 15vw;
 }

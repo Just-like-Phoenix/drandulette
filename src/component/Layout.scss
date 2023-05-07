@@ -1,13 +1,18 @@
 .upernavbar {
   margin: auto;
   width: 80vw;
+  min-width: fit-content;
   height: 60px !important;
   padding: 0 !important;
   justify-items: center;
+
+  justify-content: space-between !important;
 }
 .lowernavbar {
   height: 40px !important;
+  width: 100%;
   padding: 0 !important;
+  justify-content: center !important;
 }
 
 .footer {
@@ -17,7 +22,6 @@
 
 .navbar-expand {
   flex-wrap: nowrap;
-  justify-content: space-between !important;
 }
 
 .logo {
@@ -28,4 +32,8 @@
 .buttons {
   margin: 0 !important;
   padding: 0 !important;
+}
+
+.nav-link {
+  color: white !important;
 }
