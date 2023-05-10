@@ -8,6 +8,9 @@ import TopicsPage from "./pages/Topics/TopicsPage";
 import AnnouncmentAddingPage from "./pages/AnnouncmentAdding/AnnouncmentAddingPage";
 import TopicAddingPage from "./pages/TopicAdding/TopicAddingPage";
 import SpecificTopicPage from "./pages/SpecificTopic/SpecificTopicPage";
+import SpecificAnnouncmentPage from "./pages/SpecificAnnouncment/SpecificAnnouncmentPage";
+import AnnouncmentsPage from "./pages/Announcments/AnnouncmentsPage";
+import ProfilePage from "./pages/Profile/ProfilePage";
 
 export interface IAppProps {}
 
@@ -16,10 +19,15 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
     <Routes>
       <Route element={<LayoutComponent />}>
         <Route path="/" element={<MainPage />} />
+        <Route path="/announcments">
+          <Route index element={<AnnouncmentsPage />} />
+          <Route path=":announcmentID" element={<SpecificAnnouncmentPage />} />
+        </Route>
         <Route path="/topics">
           <Route index element={<TopicsPage />} />
           <Route path=":topicID" element={<SpecificTopicPage />} />
         </Route>
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/announcmentadding" element={<AnnouncmentAddingPage />} />
         <Route path="/topicadding" element={<TopicAddingPage />} />
       </Route>

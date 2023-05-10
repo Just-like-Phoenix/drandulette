@@ -17,6 +17,7 @@ interface FormData {
   phone: string;
   name: string;
   password: string;
+  files: File[];
 }
 
 export interface ISignUpProps {}
@@ -29,11 +30,31 @@ const SignUp: React.FunctionComponent<ISignUpProps> = (props) => {
   } = useForm<FormData>();
   const navigate = useNavigate();
 
+  const convertBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file as Blob);
+      fileReader.onload = () => {
+        resolve(fileReader.result as unknown as string);
+      };
+    });
+  };
+
   const onSubmit = async (data: FormData) => {
+    var imgBase64: string[] = [];
+    console.log(imgBase64[0]);
+    for (let i = 0; i < data.files.length; i++) {
+      const res = await convertBase64(data.files[i]);
+      imgBase64[i] = res;
+    }
     var status: String = "";
-    signUp(data.email, data.password, data.name, data.phone).catch(function (
-      error
-    ) {
+    signUp(
+      data.email,
+      data.password,
+      data.name,
+      data.phone,
+      imgBase64[0]
+    ).catch(function (error) {
       status = error.response.status.toString();
     });
     if (status !== "400") {
@@ -45,9 +66,9 @@ const SignUp: React.FunctionComponent<ISignUpProps> = (props) => {
 
   return (
     <div className="signupdiv">
-      <Card className="logincard">
+      <Card className="signupcard">
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Stack gap={3}>
+          <Stack gap={3} style={{ padding: "30px" }}>
             <Navbar.Brand className="logo" href="/">
               <img src={fulllogo} alt="" width={241} height={60} />
             </Navbar.Brand>
@@ -115,6 +136,12 @@ const SignUp: React.FunctionComponent<ISignUpProps> = (props) => {
                 </Form.Text>
               )}
             </FloatingLabel>
+
+            <Form.Control
+              type="file"
+              accept=".png,.jpg,.jpeg"
+              {...register("files")}
+            />
 
             <Button size="lg" type="submit" variant="primary">
               Зарегистрироваться

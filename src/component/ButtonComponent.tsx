@@ -25,6 +25,14 @@ export const AddAnnouncementButton = () => {
   );
 };
 
+export const ProfileButton = () => {
+  return (
+    <Button variant="primary" href="/profile">
+      Профиль
+    </Button>
+  );
+};
+
 export const LogOutButton = () => {
   return (
     <Button variant="danger" href="/" onClick={logOut}>

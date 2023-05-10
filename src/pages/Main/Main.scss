@@ -4,12 +4,19 @@
   height: 80vh;
 }
 
-.filter {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 5px;
+.mainPageDiv {
+  margin: auto;
+  width: 80vw;
+  display: flex;
+  justify-content: center;
 }
 
-.filtrButtons {
-  width: 15vw;
+.mainCard {
+  display: flex !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  align-items: center;
+  padding: 0 !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
 }

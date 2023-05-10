@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import Cars from "../../cars.json";
 import { useNavigate } from "react-router";
 import { postAnnouncment } from "../../api/announcment.service";
-import { stat } from "fs";
 
 interface FormData {
   price: number;
@@ -22,6 +21,7 @@ interface FormData {
   fuelType: string;
   body: string;
   wheelDrive: string;
+  text: string;
   files: File[];
   ex400: string;
   ex422: string;
@@ -33,8 +33,6 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
     register,
     handleSubmit,
     setError,
-    setValue,
-    getValues,
     clearErrors,
     formState: { errors },
   } = useForm<FormData>();
@@ -81,6 +79,7 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
       data.fuelType,
       data.body,
       data.wheelDrive,
+      data.text,
       email as string,
       imgBase64
     )
@@ -111,7 +110,7 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
           onChange={(e) => onFormaChange()}
         >
           <Stack direction="horizontal">
-            <Stack className="selectable">
+            <Stack className="selectable annoncmentStack">
               <Form.Select
                 style={{ height: 58 }}
                 defaultValue={"0"}
@@ -219,7 +218,7 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
                 </Form.Text>
               )}
             </Stack>
-            <Stack className="writable">
+            <Stack className="writable annoncmentStack">
               <FloatingLabel label="Год">
                 <Form.Control
                   type="Text"
@@ -302,7 +301,25 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
               )}
             </Stack>
           </Stack>
-          <Stack style={{ marginTop: 30 }} gap={3}>
+          <Stack className="annoncmentStack" style={{ marginTop: 30 }}>
+            <FloatingLabel controlId="floatingText" label="Описание">
+              <Form.Control
+                style={{ height: 260 }}
+                placeholder="Текст"
+                as="textarea"
+                rows={5}
+                maxLength={1000}
+                {...register("text", { required: true })}
+              />
+              {errors.text && (
+                <Form.Text style={{ color: "#ff0000" }}>
+                  Введите описание!
+                </Form.Text>
+              )}
+            </FloatingLabel>
+          </Stack>
+
+          <Stack className="annoncmentStack" style={{ marginTop: 30 }} gap={3}>
             <Form.Control
               type="file"
               multiple

@@ -12,6 +12,7 @@ import {
   SignInButton,
   SignUpButton,
 } from "./ButtonComponent";
+import ProfileComponent from "./Profile/ProfileComponent";
 
 export type LayoutProps = {
   user: any;
@@ -26,7 +27,7 @@ export const LayoutButtons = (props: LayoutProps) => {
         {props.user == null ? (
           <SignUpButton />
         ) : props.moderator === "0" ? (
-          <LogOutButton />
+          <ProfileComponent />
         ) : (
           <></>
         )}
@@ -48,7 +49,7 @@ function LayoutComponent() {
       </Navbar>
       <Navbar className="lowernavbar" bg="primary">
         <Stack direction="horizontal" gap={1}>
-          <Nav.Link href="/">Обявления</Nav.Link>
+          <Nav.Link href="/announcments">Обявления</Nav.Link>
           <Nav.Link href="/topics">Форум</Nav.Link>
         </Stack>
       </Navbar>

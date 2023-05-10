@@ -36,8 +36,7 @@ const SignIn: React.FunctionComponent<ISignInProps> = (props) => {
 
     if (status !== "204") {
       localStorage.setItem("user_mailLogin", user.mailLogin);
-      localStorage.setItem("user_password", user.password);
-      localStorage.setItem("user_phone", user.phone);
+      localStorage.setItem("user_profilePic", user.profilePic);
       localStorage.setItem("user_name", user.name);
       localStorage.setItem("user_moderator", user.moderator.toString());
       navigate("/");
@@ -48,9 +47,9 @@ const SignIn: React.FunctionComponent<ISignInProps> = (props) => {
 
   return (
     <div className="signindiv">
-      <Card className="logincard">
+      <Card className="signincard">
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Stack gap={3}>
+          <Stack gap={3} style={{ padding: "30px" }}>
             <Navbar.Brand className="logo" href="/">
               <img src={fulllogo} alt="" width={241} height={60} />
             </Navbar.Brand>

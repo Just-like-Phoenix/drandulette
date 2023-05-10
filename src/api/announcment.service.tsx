@@ -1,4 +1,48 @@
 import axios from "axios";
+import { Announcement } from "../types/Announcement.type";
+
+export const getAnnouncmentByAll = (
+  _text: string,
+  _brand: string,
+  _model: string,
+  _isSpecific: number,
+  _page: number
+) => {
+  return axios.get<Announcement[]>(
+    "https://localhost:7234/announcement/Announcement",
+    {
+      params: {
+        probableName: _text,
+        brand: _brand,
+        model: _model,
+        isSpecific: _isSpecific,
+        page: _page,
+      },
+    }
+  );
+};
+
+export const getAnnouncment = (_isSpecific: number) => {
+  return axios.get<Announcement[]>(
+    "https://localhost:7234/announcement/Announcement",
+    {
+      params: {
+        isSpecific: _isSpecific,
+      },
+    }
+  );
+};
+
+export const getAnnouncmentById = (_announcmentID: string) => {
+  return axios.get<Announcement[]>(
+    "https://localhost:7234/announcement/Announcement",
+    {
+      params: {
+        announcmentID: _announcmentID,
+      },
+    }
+  );
+};
 
 export const postAnnouncment = (
   _price: number,
@@ -12,6 +56,7 @@ export const postAnnouncment = (
   _fuelType: string,
   _body: string,
   _wheelDrive: string,
+  _sellersComment: string,
   _mailLogin: string,
   _files: string[]
 ) => {
@@ -27,7 +72,8 @@ export const postAnnouncment = (
     volume: _volume,
     fuelType: _fuelType,
     body: _body,
-    wheelSide: _wheelDrive,
+    wheelDrive: _wheelDrive,
+    sellersComment: _sellersComment,
     pics: _files,
   });
 };

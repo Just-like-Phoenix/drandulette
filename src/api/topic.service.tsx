@@ -1,10 +1,30 @@
 import axios from "axios";
 import { Topic } from "../types/Topic.type";
 
-export const getAllTopics = () => {
+export const getAllTopics = (_page: number) => {
   return axios.get<Topic[]>("https://localhost:7234/topic/Topic", {
     params: {
-      probableName: "",
+      page: _page,
+    },
+  });
+};
+
+export const getTopicByID = (_topicID: string) => {
+  return axios.get<Topic[]>("https://localhost:7234/topic/Topic", {
+    params: {
+      topicID: _topicID,
+    },
+  });
+};
+
+export const getTopicByProbableName = (
+  _probableName: string,
+  _page: number
+) => {
+  return axios.get<Topic[]>("https://localhost:7234/topic/Topic", {
+    params: {
+      probableName: _probableName,
+      page: _page,
     },
   });
 };

@@ -1,7 +1,10 @@
+import { User } from "./User.type";
+
 export type TopicComment = {
-  topic_commentID: string;
-  topicID: string;
+  mailLogin: string;
   message: string;
   time: string;
-  mailLogin: string;
+  topicID: string;
+  topic_commentID: string;
+  user: User;
 };

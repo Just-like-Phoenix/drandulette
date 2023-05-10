@@ -1,0 +1,80 @@
+.carCardMain {
+  width: 100% !important;
+  height: 240px !important;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px !important;
+}
+
+.carCard {
+  width: 100% !important;
+
+  border-color: transparent !important;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 10px -3px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  border: 0px !important;
+  padding: 0px !important;
+}
+
+.carCardImg {
+  width: 320px !important;
+  height: 240px !important;
+
+  background-color: black;
+
+  border-radius: 7px;
+}
+
+.carCardBrand {
+  width: 70%;
+  font-size: large;
+  font-weight: bold;
+  display: flex;
+  justify-content: start !important;
+  margin: 0 !important;
+  color: black !important;
+}
+
+.carCardPrice {
+  width: 30%;
+  font-size: large;
+  font-weight: bold;
+  display: flex;
+  justify-content: end !important;
+  margin: 0 !important;
+  color: #000000;
+}
+
+.carCardMileage {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+
+  margin: auto;
+
+  color: black;
+}
+
+.cardRow {
+  margin: 0px !important;
+  width: 200px;
+}
+
+.cardFCol {
+  margin: 0px !important;
+  padding: 0px !important;
+  display: flex;
+  align-items: center !important;
+  justify-content: start !important;
+}
+
+.cardSCol {
+  margin: 0px !important;
+  padding: 0px !important;
+  display: flex;
+  align-items: center !important;
+  justify-content: start !important;
+}

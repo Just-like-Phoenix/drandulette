@@ -1,0 +1,59 @@
+.commentCard {
+  margin-top: 30px !important;
+
+  padding: 30px !important;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.25);
+
+  border-radius: 7px !important;
+  border-color: transparent !important;
+}
+
+.commentProfile {
+  margin-bottom: 30px !important;
+}
+
+.commentProfilePic {
+  width: 50px !important;
+  height: 50px !important;
+  padding: 1px !important;
+  border: thin solid black;
+  margin-right: 10px !important;
+  border-radius: 25px !important;
+  background-color: #000000;
+}
+
+.topicProfileTimeStamp {
+  margin: 0px !important;
+
+  width: 40% !important;
+  height: 15px !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: start !important;
+
+  color: black;
+}
+
+.commentText {
+  display: flex;
+  align-items: center;
+  text-align: justify !important;
+  color: #000000 !important;
+}
+
+.commentProfileName {
+  margin: 0px !important;
+
+  width: 40% !important;
+  height: 35px !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: start !important;
+
+  color: #000000;
+}

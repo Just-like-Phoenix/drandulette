@@ -1,0 +1,23 @@
+.specTopicHeader {
+  width: 100% !important;
+  padding: 30px !important;
+  margin-top: 30px !important;
+  background: #ffffff;
+  box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.25);
+
+  border-radius: 7px !important;
+  border-color: transparent !important;
+}
+
+.topicHeaderTitle {
+  font-weight: bold !important;
+  display: flex;
+  align-items: center;
+  color: #000000 !important;
+}
+
+.topicHeaderText {
+  display: flex;
+  align-items: center;
+  color: #000000 !important;
+}

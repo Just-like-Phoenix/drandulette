@@ -1,3 +1,5 @@
+//For topic page with info and link
+
 import React from "react";
 
 import "./Topic.scss";
@@ -11,19 +13,20 @@ export interface ITopicProps {
   topicTheme: string;
   topicText: string;
   topicTime: string;
+  topicPic: string;
 }
 const TopicComponent: React.FunctionComponent<ITopicProps> = (props) => {
   return (
     <Card className="topicCard">
       <Nav.Link
-        href={"/topics/:" + props.topicID}
+        href={"/topics/" + props.topicID}
         className="topicTitle"
-        style={{ fontWeight: "bold", fontSize: 30 }}
+        style={{ color: "black", fontWeight: "bold", fontSize: 30 }}
       >
         {props.topicTheme}
       </Nav.Link>
       <Stack gap={0} direction="horizontal" className="topicProfile">
-        <Card.Img className="topicProfilePic"></Card.Img>
+        <Card.Img className="topicProfilePic" src={props.topicPic}></Card.Img>
         <Stack gap={0} direction="vertical">
           <Card.Text className="topicProfileName">{props.topicName}</Card.Text>
           <Card.Text className="topicProfileTimeStamp">

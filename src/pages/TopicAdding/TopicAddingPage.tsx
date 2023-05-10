@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import { postTopic } from "../../api/topic.service";
-import { Stack } from "react-bootstrap";
 
 interface FormData {
   theme: string;
@@ -28,15 +27,17 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
   const onSubmit = async (data: FormData) => {
     const email = localStorage.getItem("user_mailLogin");
     var status: String = "";
-    postTopic(email as string, data.theme, data.text).catch(function (error) {
-      status = error.response.status.toString();
-
-      if (status !== "400") {
+    postTopic(email as string, data.theme, data.text)
+      .then((response) => {
         navigate("/topics");
-      } else {
-        setError("root.400", {});
-      }
-    });
+      })
+      .catch(function (error) {
+        status = error.response.status.toString();
+
+        if (status === "400") {
+          setError("root.400", {});
+        }
+      });
   };
 
   return (

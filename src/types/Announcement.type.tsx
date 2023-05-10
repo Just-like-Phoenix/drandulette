@@ -1,16 +1,20 @@
+import { User } from "./User.type";
+
 export type Announcement = {
   announcementID: string;
-  price: number;
+  price: string;
   brand: string;
   model: string;
-  year: number;
-  mileage: number;
+  year: string;
+  mileage: string;
   transmission: string;
-  hp: number;
-  volume: number;
+  hp: string;
+  volume: string;
   fuelType: string;
   body: string;
-  wheelSide: string;
-  picsPath: string;
+  wheelDrive: string;
+  sellersComment: string;
+  pics: string[];
   mailLogin: string;
+  user: User;
 };
