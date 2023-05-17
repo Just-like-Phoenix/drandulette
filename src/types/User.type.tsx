@@ -4,5 +4,7 @@ export type User = {
   name: string;
   phone: string;
   moderator: number;
+  verificated: number;
+  banned: number;
   profilePic: string;
 };

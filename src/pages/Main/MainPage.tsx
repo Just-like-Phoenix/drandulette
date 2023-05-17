@@ -30,17 +30,21 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
   return (
     <div className="mainPageDiv">
       <Card className="mainCard">
-        <Card className="mainCard">
+        <Stack>
           <Nav.Link
             href={"/announcments"}
             className="topicTitle"
-            style={{ color: "black", fontWeight: "bold", fontSize: 30 }}
+            style={{
+              textAlign: "center",
+              color: "black",
+              fontWeight: "bold",
+              fontSize: 30,
+              marginBottom: 30,
+            }}
           >
             Обявления
           </Nav.Link>
-        </Card>
 
-        <Stack>
           {announcments.map((e) => {
             return (
               <AnnouncmentComponent
@@ -57,15 +61,18 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
             );
           })}
 
-          <Card className="mainCard">
-            <Nav.Link
-              href={"/topics"}
-              className="topicTitle"
-              style={{ color: "black", fontWeight: "bold", fontSize: 30 }}
-            >
-              Топики
-            </Nav.Link>
-          </Card>
+          <Nav.Link
+            href={"/topics"}
+            className="topicTitle"
+            style={{
+              textAlign: "center",
+              color: "black",
+              fontWeight: "bold",
+              fontSize: 30,
+            }}
+          >
+            Топики
+          </Nav.Link>
 
           {topics.map((e) => {
             return (
@@ -77,6 +84,7 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
                 topicID={e.topicID}
                 topicTheme={e.topic_theme}
                 topicText={e.topic_text}
+                verificated={e.user.verificated}
               />
             );
           })}

@@ -44,6 +44,23 @@ export const getAnnouncmentById = (_announcmentID: string) => {
   );
 };
 
+export const getAnnouncmentByMail = (
+  _mail: string,
+  _isSpecific: number,
+  _page: number
+) => {
+  return axios.get<Announcement[]>(
+    "https://localhost:7234/announcement/Announcement",
+    {
+      params: {
+        mail: _mail,
+        isSpecific: _isSpecific,
+        page: _page,
+      },
+    }
+  );
+};
+
 export const postAnnouncment = (
   _price: number,
   _brand: string,
@@ -75,5 +92,13 @@ export const postAnnouncment = (
     wheelDrive: _wheelDrive,
     sellersComment: _sellersComment,
     pics: _files,
+  });
+};
+
+export const delAnnouncment = (_annoncmentID: string) => {
+  return axios.delete("https://localhost:7234/announcement/Announcement", {
+    params: {
+      announcementID: _annoncmentID,
+    },
   });
 };

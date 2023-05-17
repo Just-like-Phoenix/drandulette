@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./AnnouncmentCard.scss";
 import {
@@ -11,6 +11,12 @@ import {
   Stack,
   Tooltip,
 } from "react-bootstrap";
+import { currency } from "../../api/currencyapi.service";
+
+export type cur = {
+  code: string;
+  value: number;
+};
 
 export interface IAnnouncmentProps {
   announcementID: string;
@@ -25,11 +31,23 @@ export interface IAnnouncmentProps {
 const AnnouncmentComponent: React.FunctionComponent<IAnnouncmentProps> = (
   props
 ) => {
-  const renderTooltip = (props: any) => (
+  const [convert, setConvert] = useState<number>(0);
+
+  const renderTooltip = (price: string) => (
     <Tooltip id="button-tooltip" {...props}>
-      Simple tooltip
+      {parseInt(((price as unknown as number) * convert).toString())} USD
     </Tooltip>
   );
+
+  const getData = async () => {
+    const promise = (await currency()).data;
+    let currencie: cur = { code: "USD", value: 0 };
+    Object.values(promise.data).map((item) => {
+      currencie = item as cur;
+    });
+    console.log(currencie.value);
+    setConvert(currencie.value);
+  };
 
   return (
     <div className="carCardMain">
@@ -54,7 +72,8 @@ const AnnouncmentComponent: React.FunctionComponent<IAnnouncmentProps> = (
               <OverlayTrigger
                 placement="right"
                 delay={{ show: 250, hide: 400 }}
-                overlay={renderTooltip}
+                onEnter={(e) => getData()}
+                overlay={renderTooltip(props.price)}
               >
                 <Card.Text className="carCardPrice">
                   {props.price + " BYN"}

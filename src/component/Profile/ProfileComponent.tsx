@@ -5,7 +5,7 @@ import Card from "react-bootstrap/esm/Card";
 import Stack from "react-bootstrap/esm/Stack";
 import Image from "react-bootstrap/Image";
 import Dropdown from "react-bootstrap/esm/Dropdown";
-import { LogOutButton, ProfileButton } from "../ButtonComponent";
+import { LogOutButton, ProfileButton, VerButton } from "../ButtonComponent";
 
 export interface IProfileProps {}
 const ProfileComponent: React.FunctionComponent<IProfileProps> = (props) => {
@@ -25,6 +25,18 @@ const ProfileComponent: React.FunctionComponent<IProfileProps> = (props) => {
       <Dropdown.Menu style={{ padding: 8 }} align={{ lg: "end" }}>
         <Stack>
           <ProfileButton />
+          {localStorage.getItem("user_moderator") === "0" ? (
+            localStorage.getItem("user_verificated") === "0" ? (
+              <>
+                <div style={{ marginTop: 8 }} />
+                <VerButton />
+              </>
+            ) : (
+              <></>
+            )
+          ) : (
+            <></>
+          )}
           <div style={{ marginTop: 8 }} />
           <LogOutButton />
         </Stack>

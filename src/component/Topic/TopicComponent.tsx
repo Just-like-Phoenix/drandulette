@@ -6,6 +6,7 @@ import "./Topic.scss";
 import Card from "react-bootstrap/esm/Card";
 import Stack from "react-bootstrap/esm/Stack";
 import Nav from "react-bootstrap/esm/Nav";
+import verificated from "../assets/img/done.svg";
 
 export interface ITopicProps {
   topicID: string;
@@ -14,6 +15,7 @@ export interface ITopicProps {
   topicText: string;
   topicTime: string;
   topicPic: string;
+  verificated: number;
 }
 const TopicComponent: React.FunctionComponent<ITopicProps> = (props) => {
   return (
@@ -28,7 +30,23 @@ const TopicComponent: React.FunctionComponent<ITopicProps> = (props) => {
       <Stack gap={0} direction="horizontal" className="topicProfile">
         <Card.Img className="topicProfilePic" src={props.topicPic}></Card.Img>
         <Stack gap={0} direction="vertical">
-          <Card.Text className="topicProfileName">{props.topicName}</Card.Text>
+          <Stack direction="horizontal">
+            <Card.Text className="topicProfileName">
+              {props.topicName}
+            </Card.Text>
+            {props.verificated === 1 ? (
+              <Card.Img
+                src={verificated}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}
+              />
+            ) : (
+              <></>
+            )}
+          </Stack>
+
           <Card.Text className="topicProfileTimeStamp">
             {props.topicTime}
           </Card.Text>

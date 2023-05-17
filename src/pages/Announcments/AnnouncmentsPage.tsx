@@ -170,10 +170,11 @@ const AnnouncmentsPage: React.FunctionComponent<IAnnouncmentsProps> = (
               />
             );
           })}
+
           <Stack style={{ margin: "auto" }} direction="horizontal" gap={2}>
             {page === 0 ? null : (
               <Button
-                className="moreAnnouncmentsButtons"
+                className="moreAnnouncmentsButton"
                 onClick={(e) => setPage(page - 1)}
               >
                 {"<"}

@@ -11,15 +11,18 @@ import AnnoncmentDescriptionComponent from "../../component/AnnoncmentDescriptio
 import { useParams } from "react-router-dom";
 import { getAnnouncmentById } from "../../api/announcment.service";
 import { Announcement } from "../../types/Announcement.type";
-import { error } from "console";
 import Spinner from "react-bootstrap/esm/Spinner";
-import { render } from "@testing-library/react";
+import AnnoncmentCommentAddingComponent from "../../component/AnnoncmentCommentAdding/AnnoncmentCommentAddingComponent";
+import { getAnnouncmentCommentById } from "../../api/announcmentcomment.service";
+import { AnnouncementComment } from "../../types/Announcement_comment.type";
+import AnnoncmentCommentComponent from "../../component/AnnoncmentComment/AnnoncmentCommentComponent";
 
 export interface ISpecificAnnouncementProps {}
 const SpecificAnnouncementPage: React.FunctionComponent<
   ISpecificAnnouncementProps
 > = (props) => {
   const [announcment, setAnnouncement] = useState<Announcement>();
+  const [coments, setComents] = useState<AnnouncementComment[]>([]);
   const [isLoading, setLoading] = useState(true);
   const { announcmentID } = useParams();
 
@@ -35,9 +38,19 @@ const SpecificAnnouncementPage: React.FunctionComponent<
       .catch((error) => {});
   };
 
+  const getComents = async () => {
+    await getAnnouncmentCommentById(announcmentID as string)
+      .then((response) => {
+        setComents(response.data);
+      })
+      .catch((error) => {});
+  };
+
   useEffect(() => {
     getAnnouncement();
+    getComents();
   }, []);
+
   if (isLoading) {
     return (
       <div className="specAnnoncmentSpinerDiv">
@@ -45,6 +58,7 @@ const SpecificAnnouncementPage: React.FunctionComponent<
       </div>
     );
   }
+
   return (
     <div className="specAnnoncmentDiv">
       <Card className="mainAnnoncmentCard">
@@ -53,6 +67,8 @@ const SpecificAnnouncementPage: React.FunctionComponent<
           model={announcment?.model as string}
           year={announcment?.year as string}
           price={announcment?.price as string}
+          annoncmentID={announcment?.announcementID as string}
+          mailLogin={announcment?.user.mailLogin as string}
         />
 
         <AnnoncmentCarouselComponent imgs={announcment?.pics} />
@@ -74,12 +90,39 @@ const SpecificAnnouncementPage: React.FunctionComponent<
             <AnnoncmentUserComponent
               pic={announcment?.user.profilePic}
               name={announcment?.user.name as string}
+              phone={announcment?.user.phone as string}
+              verificated={announcment?.user.verificated as number}
             />
             <AnnoncmentDescriptionComponent
               text={announcment?.sellersComment as string}
             />
           </Stack>
         </Stack>
+        {localStorage.getItem("user_moderator") === "0" ? (
+          localStorage.getItem("user_banned") === "0" ? (
+            <AnnoncmentCommentAddingComponent
+              onSubmit={getComents}
+              mailLogin={localStorage.getItem("user_mailLogin") as string}
+              topicID={announcment?.announcementID as string}
+            />
+          ) : null
+        ) : (
+          <></>
+        )}
+
+        {coments.map((item) => {
+          return (
+            <AnnoncmentCommentComponent
+              mailLogin={item.mailLogin}
+              commentID={item.announcment_commentID}
+              name={item.user.name}
+              time={item.time}
+              message={item.message}
+              img={item.user.profilePic}
+              verificated={item.user.verificated}
+            />
+          );
+        })}
       </Card>
     </div>
   );

@@ -10,6 +10,22 @@ export const signIn = (_login: string, _password: string) => {
   });
 };
 
+export const bannUser = (_login: string) => {
+  return axios.put(
+    "https://localhost:7234/authorization/LogIN?mailLogin=" +
+      _login +
+      "&verification=0&banned=1"
+  );
+};
+
+export const verificateUser = (_login: string) => {
+  return axios.put(
+    "https://localhost:7234/authorization/LogIN?mailLogin=" +
+      _login +
+      "&verification=1&banned=0"
+  );
+};
+
 export const signUp = (
   _login: string,
   _password: string,
@@ -32,4 +48,6 @@ export const logOut = () => {
   localStorage.removeItem("user_profilePic");
   localStorage.removeItem("user_name");
   localStorage.removeItem("user_moderator");
+  localStorage.removeItem("user_verificated");
+  localStorage.removeItem("user_banned");
 };

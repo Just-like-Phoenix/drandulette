@@ -11,6 +11,8 @@ import SpecificTopicPage from "./pages/SpecificTopic/SpecificTopicPage";
 import SpecificAnnouncmentPage from "./pages/SpecificAnnouncment/SpecificAnnouncmentPage";
 import AnnouncmentsPage from "./pages/Announcments/AnnouncmentsPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
+import ChartsPage from "./pages/Charts/ChartsPage";
+import VerificationPage from "./pages/Verification/VerificationPage";
 
 export interface IAppProps {}
 
@@ -29,8 +31,10 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
         </Route>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/announcmentadding" element={<AnnouncmentAddingPage />} />
+        <Route path="/charts" element={<ChartsPage />} />
         <Route path="/topicadding" element={<TopicAddingPage />} />
       </Route>
+      <Route path="/verification" element={<VerificationPage />} />
       <Route path="/signin" element={<SignInPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="*" element={<NotFoundPage />} />

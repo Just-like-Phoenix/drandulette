@@ -41,3 +41,11 @@ export const postTopic = (
     topic_text: _topic_text,
   });
 };
+
+export const delTopic = (_topicID: string) => {
+  return axios.delete("https://localhost:7234/topic/Topic", {
+    params: {
+      topicID: _topicID,
+    },
+  });
+};

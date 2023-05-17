@@ -48,13 +48,20 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
           topicTheme={topic?.topic_theme as string}
           topicText={topic?.topic_text as string}
           topicTime={topic?.time as string}
+          topoicID={topic?.topicID as string}
+          mailLogin={topic?.mailLogin as string}
+          verificated={topic?.user.verificated as number}
         />
-
-        {localStorage.getItem("user_mailLogin") === null ? null : (
-          <SpecificTopicCommentAddingComponent
-            onSubmit={getComents}
-            topicID={topicID as string}
-          />
+        {localStorage.getItem("user_moderator") === "0" ? (
+          localStorage.getItem("user_mailLogin") ===
+          null ? null : localStorage.getItem("user_banned") === "0" ? (
+            <SpecificTopicCommentAddingComponent
+              onSubmit={getComents}
+              topicID={topicID as string}
+            />
+          ) : null
+        ) : (
+          <></>
         )}
 
         <Card className="specTopic">
@@ -69,6 +76,9 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
               name={e.user.name}
               message={e.message}
               time={e.time}
+              topicCommentID={e.topic_commentID}
+              mailLogin={e.mailLogin}
+              verificated={e.user.verificated}
             />
           );
         })}

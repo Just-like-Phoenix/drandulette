@@ -23,3 +23,11 @@ export const postTopicComment = (
     topicID: _topicID,
   });
 };
+
+export const delTopicComment = (_topic_commentID: string) => {
+  return axios.delete("https://localhost:7234/topic/TopicComments", {
+    params: {
+      topic_commentID: _topic_commentID,
+    },
+  });
+};

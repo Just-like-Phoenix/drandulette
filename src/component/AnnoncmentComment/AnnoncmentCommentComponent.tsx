@@ -1,28 +1,38 @@
 import React from "react";
 
 import verificated from "../assets/img/done.svg";
-import "./SpecificTopicComment.scss";
+import "./AnnoncmentComment.scss";
 import Card from "react-bootstrap/esm/Card";
 import Stack from "react-bootstrap/esm/Stack";
-import { DropdownTopicCommentAction } from "../ButtonComponent";
+import { DropdownAnnoncmentCommentAction } from "../ButtonComponent";
 
-export interface ISpecificTopicCommentProps {
+export interface IAnnoncmentCommentProps {
+  mailLogin: string;
   name: string;
   message: string;
   time: string;
   img: string;
-  topicCommentID: string;
-  mailLogin: string;
+  commentID: string;
   verificated: number;
 }
-const SpecificTopicCommentComponent: React.FunctionComponent<
-  ISpecificTopicCommentProps
+const AnnoncmentCommentComponent: React.FunctionComponent<
+  IAnnoncmentCommentProps
 > = (props) => {
+  const DropdownSelector = () => {
+    if (localStorage.getItem("user_moderator") === "0") {
+      if (localStorage.getItem("user_mailLogin") === props.mailLogin) {
+        return <DropdownAnnoncmentCommentAction commentID={props.commentID} />;
+      }
+    } else {
+      return <DropdownAnnoncmentCommentAction commentID={props.commentID} />;
+    }
+    return <></>;
+  };
+
   return (
     <Card className="commentCard">
       <Stack className="commentProfile" gap={0} direction="horizontal">
         <Card.Img className="commentProfilePic" src={props.img}></Card.Img>
-
         <Stack gap={0} direction="vertical">
           <Stack direction="horizontal">
             <Card.Text className="commentProfileName">{props.name}</Card.Text>
@@ -42,25 +52,11 @@ const SpecificTopicCommentComponent: React.FunctionComponent<
             {props.time}
           </Card.Text>
         </Stack>
-        {localStorage.getItem("user_moderator") === "0" ? (
-          localStorage.getItem("user_mailLogin") === props.mailLogin ? (
-            <DropdownTopicCommentAction
-              login={props.mailLogin}
-              topicCommentID={props.topicCommentID}
-            />
-          ) : (
-            <></>
-          )
-        ) : (
-          <DropdownTopicCommentAction
-            login={props.mailLogin}
-            topicCommentID={props.topicCommentID}
-          />
-        )}
+        <DropdownSelector />
       </Stack>
       <Card.Text className="commentText">{props.message}</Card.Text>
     </Card>
   );
 };
 
-export default SpecificTopicCommentComponent;
+export default AnnoncmentCommentComponent;

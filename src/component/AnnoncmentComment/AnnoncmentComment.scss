@@ -1,31 +1,20 @@
-.topicMainDiv {
-  margin: auto;
-  width: 80vw !important;
-  display: flex;
-  justify-content: center;
-}
-
-.topicCard {
+.commentCard {
   margin-top: 30px !important;
-  padding: 10px !important;
+
+  padding: 30px !important;
+
   background: #ffffff;
   box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.25);
-  border-radius: 7px;
+
+  border-radius: 7px !important;
   border-color: transparent !important;
 }
 
-.topicTitle {
-  display: flex;
-  align-items: center;
-  color: #000000 !important;
-}
-
-.topicProfile {
-  margin-top: 30px !important;
+.commentProfile {
   margin-bottom: 30px !important;
 }
 
-.topicProfilePic {
+.commentProfilePic {
   width: 50px !important;
   height: 50px !important;
   padding: 1px !important;
@@ -49,7 +38,14 @@
   color: black;
 }
 
-.topicProfileName {
+.commentText {
+  display: flex;
+  align-items: center;
+  text-align: justify !important;
+  color: #000000 !important;
+}
+
+.commentProfileName {
   margin: 0px !important;
 
   height: 35px !important;
@@ -59,20 +55,4 @@
   text-align: start !important;
 
   color: #000000;
-}
-
-.topicButton {
-  margin-left: auto !important;
-  margin-right: 0px !important;
-
-  width: 110px !important;
-  height: 40px !important;
-}
-
-.searchBar {
-  background: #ffffff;
-  box-shadow: 0px 0px 40px -10px rgba(0, 0, 0, 0.25);
-  padding: 20px;
-  border-radius: 25px !important;
-  border-color: transparent !important;
 }

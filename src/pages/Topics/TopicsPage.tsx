@@ -37,14 +37,23 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
               onChange={(e) => setText(e.target.value)}
             />
           </InputGroup>
-          <div className="vr" />
-          <Button
-            href="/topicadding"
-            variant="primary"
-            style={{ height: 38, width: "10%" }}
-          >
-            Создать
-          </Button>
+
+          {localStorage.getItem("user_moderator") === "0" ? (
+            localStorage.getItem("user_banned") === "0" ? (
+              <>
+                <div className="vr" />
+                <Button
+                  href="/topicadding"
+                  variant="primary"
+                  style={{ height: 38, width: "10%" }}
+                >
+                  Создать
+                </Button>
+              </>
+            ) : null
+          ) : (
+            <></>
+          )}
         </Stack>
         <Stack>
           {topics.map((e) => {
@@ -57,6 +66,7 @@ const MainPage: React.FunctionComponent<IMainProps> = (props) => {
                 topicID={e.topicID}
                 topicTheme={e.topic_theme}
                 topicText={e.topic_text}
+                verificated={e.user.verificated}
               />
             );
           })}

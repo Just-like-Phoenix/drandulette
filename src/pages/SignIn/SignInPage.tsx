@@ -39,6 +39,8 @@ const SignIn: React.FunctionComponent<ISignInProps> = (props) => {
       localStorage.setItem("user_profilePic", user.profilePic);
       localStorage.setItem("user_name", user.name);
       localStorage.setItem("user_moderator", user.moderator.toString());
+      localStorage.setItem("user_verificated", user.verificated.toString());
+      localStorage.setItem("user_banned", user.banned.toString());
       navigate("/");
     } else {
       setError("root.204", {});

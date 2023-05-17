@@ -23,13 +23,23 @@ export const LayoutButtons = (props: LayoutProps) => {
   return (
     <>
       <Stack className="buttons" direction="horizontal" gap={3}>
-        {props.user == null ? <SignInButton /> : <AddAnnouncementButton />}
+        {props.user == null ? (
+          <SignInButton />
+        ) : props.moderator === "0" ? (
+          localStorage.getItem("user_banned") === "0" ? (
+            <AddAnnouncementButton />
+          ) : (
+            <></>
+          )
+        ) : (
+          <></>
+        )}
         {props.user == null ? (
           <SignUpButton />
         ) : props.moderator === "0" ? (
           <ProfileComponent />
         ) : (
-          <></>
+          <ProfileComponent />
         )}
       </Stack>
     </>
@@ -51,6 +61,11 @@ function LayoutComponent() {
         <Stack direction="horizontal" gap={1}>
           <Nav.Link href="/announcments">Обявления</Nav.Link>
           <Nav.Link href="/topics">Форум</Nav.Link>
+          {localStorage.getItem("user_moderator") === "1" ? (
+            <Nav.Link href="/charts">Статистика</Nav.Link>
+          ) : (
+            <></>
+          )}
         </Stack>
       </Navbar>
       <Outlet />

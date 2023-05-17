@@ -1,6 +1,6 @@
 .carCardMain {
   width: 100% !important;
-  height: 240px !important;
+  height: 200px !important;
   display: flex;
   justify-content: center;
   margin-bottom: 30px !important;
@@ -20,8 +20,8 @@
 
 .carCardImg {
   width: 320px !important;
-  height: 240px !important;
-
+  height: 200px !important;
+  object-fit: cover;
   background-color: black;
 
   border-radius: 7px;
